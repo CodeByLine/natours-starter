@@ -144,17 +144,18 @@ const tourSchema = new mongoose.Schema({
       next();
     });
 
-    tourSchema.pre('save', async function(next) {
-      const guidesPromises = this.guides.map(async id => await User.findById(id));
-      this.guides = await Promise.all(guidesPromises);
-      next();
-    });
+    // // embed users data model into tours data model
+    // tourSchema.pre('save', async function(next) {
+    //   const guidesPromises = this.guides.map(async id => await User.findById(id));
+    //   this.guides = await Promise.all(guidesPromises);
+    //   next();
+    // });
 
-    // Mongoose Middleware / Post Document Middleware - "save" is also called a hook
-    tourSchema.post('save', function(doc, next) {
-      console.log(doc);
-      next();
-    });
+    // // Mongoose Middleware / Post Document Middleware - "save" is also called a hook
+    // tourSchema.post('save', function(doc, next) {
+    //   console.log(doc);
+    //   next();
+    // });
 
   // Mongoose Query Middleware / Pre "save"
 
@@ -169,9 +170,10 @@ const tourSchema = new mongoose.Schema({
     tourSchema.pre(/^find/, function(next) {
       this.populate({
         path: 'guides',
-        select: '-__v -passwordChangedAt'   //remove from display
-    });
-    next();
+        select: '-__v'
+        // select: '-__v -passwordChangedAt'   //remove from display
+      });
+      next();
   });
 
     tourSchema.post(/^find/, function(docs, next) { 

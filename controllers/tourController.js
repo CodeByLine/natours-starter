@@ -40,7 +40,9 @@ exports.getAllTours = factory.getAll(Tour);
   
 // });
   
-exports.getTour = factory.getOne(Tour, {path: 'reviews'})
+exports.getTour = factory.getOne(Tour, {path: 'reviews'});
+
+
 // exports.getTour = catchAsync(async (req, res, next) => {
 //   // const tour = await Tour.findById(req.params.id).populate({
 //   //   path: 'guides',
