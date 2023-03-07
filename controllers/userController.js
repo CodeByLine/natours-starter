@@ -31,16 +31,16 @@ exports.checkID = (req, res, next, val) => {
 //route chained together
 
 
-// exports.getAllUsers = catchAsync(async (req, res, next) => {
-//   const users = await User.find();
-//   // return res.json(users);
-//   res.status(200).json({
-//     status: 'Success',
-//     data: {
-//       users: users,
-//     },
-//   });
-//   });
+exports.getAllUsers = catchAsync(async (req, res, next) => {
+  const users = await User.find();
+  // return res.json(users);
+  res.status(200).json({
+    status: 'Success',
+    data: {
+      users: users,
+    },
+  });
+  });
   
 exports.createUser = (req, res) => {
   res.status(500).json({

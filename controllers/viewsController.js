@@ -21,3 +21,13 @@ exports.getTour = catchAsync(async (req, res, next) => {
         tour
     });
 });
+
+ // Remember to disable cache in developer tools in Chrome ???
+
+exports.getLoginForm = (req, res) => {
+
+    res.status(200).render('login', {
+        title: 'Log into your account', 
+    });
+
+}
